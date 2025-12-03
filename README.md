@@ -261,101 +261,97 @@ Examples:
 
 ### Complete Data Flow
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                 │
-│   🎤 AUDIO INPUT (Live Stream / File Upload / Recording)        │
-│                                                                 │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  1️⃣ AUDIO PREPROCESSING                                │  │
-│   │   • Split into chunks (15-30 sec)                       │  │
-│   │   • Noise reduction & normalization                     │  │
-│   │   • Format conversion (WAV, PCM-16, 16kHz)             │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  2️⃣ AUTOMATIC SPEECH RECOGNITION (ASR)                 │  │
-│   │   • Azure Speech Services API                           │  │
-│   │   • Source Language Detection                           │  │
-│   │   • Output: Transcribed Text                            │  │
-│   │   • Confidence Scoring                                  │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  3️⃣ NEURAL MACHINE TRANSLATION (NMT)                   │  │
-│   │   • Azure Translator API                                │  │
-│   │   • Source → Target Language                            │  │
-│   │   • Context-aware translation                           │  │
-│   │   • Output: Translated Text                             │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  4️⃣ VOICE CUSTOMIZATION                                │  │
-│   │   • Apply emotion (Neutral/Happy/Sad/Angry)             │  │
-│   │   • Adjust speed (0.5x - 2.0x)                          │  │
-│   │   • Modify pitch                                        │  │
-│   │   • Select voice variant                                │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  5️⃣ TEXT-TO-SPEECH SYNTHESIS (TTS)                     │  │
-│   │   • Azure Neural Text-to-Speech                         │  │
-│   │   • Generate natural speech audio                       │  │
-│   │   • Output: Audio stream (WAV/MP3)                      │  │
-│   │   • Timing information for sync                         │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  6️⃣ AUDIO POSTPROCESSING                               │  │
-│   │   • Combine audio chunks                                │  │
-│   │   • Volume normalization                                │  │
-│   │   • Quality optimization                                │  │
-│   │   • Format encoding                                     │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  7️⃣ OPTIONAL: VIDEO DUBBING + LIP-SYNC                 │  │
-│   │   • Detect speaker regions                              │  │
-│   │   • Generate lip-sync animation                         │  │
-│   │   • Overlay translated audio                            │  │
-│   │   • Output: Dubbed video file                           │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  8️⃣ OPTIONAL: SUBTITLE GENERATION                      │  │
-│   │   • Generate SRT subtitle files                         │  │
-│   │   • Timing sync with audio                              │  │
-│   │   • Multi-language subtitle tracks                      │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   ┌─────────────────────────────────────────────────────────┐  │
-│   │  9️⃣ LOGGING & ANALYTICS                                │  │
-│   │   • Record processing time per step                     │  │
-│   │   • Track API latency                                   │  │
-│   │   • Store session metadata                              │  │
-│   │   • Generate performance reports                        │  │
-│   └─────────────────────────────────────────────────────────┘  │
-│                            ▼                                    │
-│   🔊 TRANSLATED SPEECH OUTPUT (+ Video/Subtitles Optional)     │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    A["🎤 AUDIO INPUT<br/>(Live Stream / File Upload / Recording)"] --> B["1️⃣ AUDIO PREPROCESSING<br/>• Split into chunks 15-30 sec<br/>• Noise reduction & normalization<br/>• Format: WAV, PCM-16, 16kHz"]
+    
+    B --> C["2️⃣ AUTOMATIC SPEECH RECOGNITION<br/>• Azure Speech Services API<br/>• Source Language Detection<br/>• Transcribed Text Output<br/>• Confidence Scoring"]
+    
+    C --> D["3️⃣ NEURAL MACHINE TRANSLATION<br/>• Azure Translator API<br/>• Source → Target Language<br/>• Context-aware translation<br/>• Translated Text Output"]
+    
+    D --> E["4️⃣ VOICE CUSTOMIZATION<br/>• Emotion: Neutral/Happy/Sad/Angry<br/>• Speed: 0.5x - 2.0x<br/>• Pitch Modification<br/>• Voice Variant Selection"]
+    
+    E --> F["5️⃣ TEXT-TO-SPEECH SYNTHESIS<br/>• Azure Neural TTS<br/>• Natural Speech Generation<br/>• Audio: WAV/MP3<br/>• Timing Info for Sync"]
+    
+    F --> G["6️⃣ AUDIO POSTPROCESSING<br/>• Combine Audio Chunks<br/>• Volume Normalization<br/>• Quality Optimization<br/>• Format Encoding"]
+    
+    G --> H{Optional<br/>Video Dub?}
+    H -->|Yes| I["7️⃣ VIDEO DUBBING + LIP-SYNC<br/>• Speaker Region Detection<br/>• Lip-sync Animation<br/>• Audio Overlay<br/>• Dubbed Video Output"]
+    H -->|No| J{Optional<br/>Subtitles?}
+    
+    I --> J{Optional<br/>Subtitles?}
+    J -->|Yes| K["8️⃣ SUBTITLE GENERATION<br/>• SRT File Generation<br/>• Timing Sync<br/>• Multi-language Tracks"]
+    J -->|No| L["9️⃣ LOGGING & ANALYTICS<br/>• Processing Time per Step<br/>• API Latency Tracking<br/>• Session Metadata Storage<br/>• Performance Reports"]
+    K --> L
+    
+    L --> M["🔊 FINAL OUTPUT<br/>Translated Speech + Optional Video/Subtitles"]
+    
+    style A fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style B fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style C fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style D fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style E fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style F fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style G fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:#fff
+    style H fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style I fill:#FF5722,stroke:#D84315,stroke-width:2px,color:#fff
+    style J fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style K fill:#00BCD4,stroke:#00838F,stroke-width:2px,color:#fff
+    style L fill:#673AB7,stroke:#4527A0,stroke-width:2px,color:#fff
+    style M fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
 ```
 
-### Processing Architecture
+### Processing Architecture - Parallel Chunked Processing
 
-```
-INPUT AUDIO STREAM
-        │
-        ├─► Chunked Processing (Parallel)
-        │   ├─► Chunk 1 ─► ASR ─► NMT ─► TTS ─► Output 1
-        │   ├─► Chunk 2 ─► ASR ─► NMT ─► TTS ─► Output 2
-        │   └─► Chunk N ─► ASR ─► NMT ─► TTS ─► Output N
-        │
-        ├─► Merge & Synchronize
-        │
-        └─► FINAL TRANSLATED SPEECH
-            + Optional: Video Dub + Subtitles + Analytics
+```mermaid
+graph TD
+    INPUT["📥 INPUT AUDIO STREAM"] --> SPLIT["🔀 Split into Chunks<br/>Chunk 1, Chunk 2, ..., Chunk N"]
+    
+    SPLIT --> P1["⚙️ PARALLEL PROCESSING<br/>Chunk 1"]
+    SPLIT --> P2["⚙️ PARALLEL PROCESSING<br/>Chunk 2"]
+    SPLIT --> PN["⚙️ PARALLEL PROCESSING<br/>Chunk N"]
+    
+    P1 --> ASR1["🎤 ASR<br/>Speech → Text"]
+    P2 --> ASR2["🎤 ASR<br/>Speech → Text"]
+    PN --> ASRN["🎤 ASR<br/>Speech → Text"]
+    
+    ASR1 --> NMT1["🌍 NMT<br/>Translate"]
+    ASR2 --> NMT2["🌍 NMT<br/>Translate"]
+    ASRN --> NMTN["🌍 NMT<br/>Translate"]
+    
+    NMT1 --> TTS1["🔊 TTS<br/>Text → Speech"]
+    NMT2 --> TTS2["🔊 TTS<br/>Text → Speech"]
+    NMTN --> TTSN["🔊 TTS<br/>Text → Speech"]
+    
+    TTS1 --> OUT1["📤 Output 1"]
+    TTS2 --> OUT2["📤 Output 2"]
+    TTSN --> OUTN["📤 Output N"]
+    
+    OUT1 --> MERGE["🔗 MERGE & SYNCHRONIZE<br/>Combine chunks with timing"]
+    OUT2 --> MERGE
+    OUTN --> MERGE
+    
+    MERGE --> FINAL["✅ FINAL TRANSLATED SPEECH<br/>+ Optional: Video Dub + Subtitles + Analytics"]
+    
+    style INPUT fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style SPLIT fill:#2196F3,stroke:#1565C0,stroke-width:2px,color:#fff
+    style P1 fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style P2 fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style PN fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style ASR1 fill:#FF5722,stroke:#D84315,stroke-width:2px,color:#fff
+    style ASR2 fill:#FF5722,stroke:#D84315,stroke-width:2px,color:#fff
+    style ASRN fill:#FF5722,stroke:#D84315,stroke-width:2px,color:#fff
+    style NMT1 fill:#00BCD4,stroke:#00838F,stroke-width:2px,color:#fff
+    style NMT2 fill:#00BCD4,stroke:#00838F,stroke-width:2px,color:#fff
+    style NMTN fill:#00BCD4,stroke:#00838F,stroke-width:2px,color:#fff
+    style TTS1 fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:#fff
+    style TTS2 fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:#fff
+    style TTSN fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px,color:#fff
+    style OUT1 fill:#673AB7,stroke:#4527A0,stroke-width:2px,color:#fff
+    style OUT2 fill:#673AB7,stroke:#4527A0,stroke-width:2px,color:#fff
+    style OUTN fill:#673AB7,stroke:#4527A0,stroke-width:2px,color:#fff
+    style MERGE fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style FINAL fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
 ```
 
 ---
