@@ -20,10 +20,8 @@
 6. [🔄 Speech-to-Speech Pipeline](#-speech-to-speech-pipeline)
 7. [📦 Installation & Setup](#-installation--setup)
 8. [🚀 Quick Start](#-quick-start)
-9. [🎯 Usage Guide](#-usage-guide)
-10. [📸 Screenshots](#-screenshots)
-11. [🗺️ Roadmap & Future Enhancements](#-roadmap--future-enhancements)
-12. [📄 License & Credits](#-license--credits)
+9. [📸 Screenshots](#-screenshots)
+10.[📄 License & Credits](#-license--credits) 
 
 ---
 
@@ -53,44 +51,7 @@ Transform speech from one language to another **in real-time** without compromis
 
 ## 🎥 Demo Video
 
-<div align="center">
-
-[![Ultra Audio Studio Demo](https://img.shields.io/badge/Watch%20Demo-YouTube-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/embed/your-demo-video-url)
-
-**See Ultra Audio Studio in Action!**
-
-> 📽️ *[Add your demo video link here - YouTube, Vimeo, or embedded player]*
-> 
-> This video showcases:
-> - 🎤 Real-time speech translation in action
-> - 🎬 Media auto-dubbing workflow
-> - 👥 Remote meeting translation features
-> - 📊 Live analytics dashboard
-> - 🎙️ Voice customization capabilities
-
-**Video Duration**: ~3-5 minutes  
-**Languages**: English with subtitles available
-
----
-
-```html
-<!-- DEMO VIDEO PLACEHOLDER -->
-<!-- 
-Replace the iframe src with your actual demo video URL
-Examples:
-- YouTube: https://www.youtube.com/embed/VIDEO_ID
-- Vimeo: https://player.vimeo.com/video/VIDEO_ID
--->
-
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/your-demo-video-id" 
-        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-</iframe>
-```
-
----
-
-</div>
+Video link: https://www.youtube.com/watch?v=j9u-gp7EpEA&t=19s
 
 ---
 
@@ -496,69 +457,6 @@ pytest scripts/backend/ --cov=scripts.backend --cov-report=html
 ```
 
 ---
-
-## 🎯 Usage Guide
-
-### 1️⃣ **Live Stream Translation**
-
-Navigate to the **Live Stream** tab:
-
-1. Select source and target languages
-2. Click **"Start Live Stream"**
-3. Speak into your microphone
-4. Translated speech plays in real-time
-5. View live transcription and metrics
-
-### 2️⃣ **Record & Dub**
-
-Navigate to the **Record & Dub** tab:
-
-1. Choose to **Record** or **Upload** audio
-2. Select target language
-3. Customize voice (emotion, speed, pitch)
-4. Click **"Generate Dub"**
-5. Preview and download translated audio
-
-### 3️⃣ **Batch Studio**
-
-Navigate to the **Batch Studio** tab:
-
-1. Upload multiple video/audio files
-2. Configure batch settings
-3. Select target languages
-4. Click **"Start Batch Processing"**
-5. Monitor progress and download results
-
-### 4️⃣ **Remote Meeting Translation**
-
-Navigate to the **Remote Meeting** tab:
-
-1. Create or join a meeting room
-2. Share room link with participants
-3. Select languages for each participant
-4. Enable real-time transcription
-5. View live translation logs
-
-### 5️⃣ **View Analytics**
-
-Navigate to the **Analytics** tab:
-
-- **Performance Metrics**: Latency, throughput
-- **Session Statistics**: Duration, accuracy
-- **Error Logs**: Debug information
-- **Export Reports**: Download analytics data
-
-### 6️⃣ **Check History**
-
-Navigate to the **History** tab:
-
-- View all past sessions
-- Re-run previous jobs
-- Download outputs
-- Share session links
-
----
-
 ## 📸 Screenshots
 
 ### Dashboard Overview
@@ -648,43 +546,6 @@ Navigate to the **History** tab:
 │                                                         │
 └─────────────────────────────────────────────────────────┘
 ```
-
----
-
-## 🗺️ Roadmap & Future Enhancements
-
-### 🚀 Near-Term (Q1 2025)
-
-- [ ] **Mobile App** - iOS and Android native applications
-- [ ] **Advanced Voice Cloning** - Clone any voice with 30-second sample
-- [ ] **Real-time Emotion Detection** - Auto-detect and adapt to speaker emotion
-- [ ] **Multi-speaker Handling** - Preserve speaker identity in group calls
-- [ ] **Background Noise Isolation** - AI-powered noise suppression
-
-### 📈 Mid-Term (Q2-Q3 2025)
-
-- [ ] **API SDK** - Python, JavaScript, Go SDKs for integration
-- [ ] **On-Premise Deployment** - Docker/Kubernetes deployment guides
-- [ ] **Advanced Lip Sync** - Deep learning-based lip synchronization
-- [ ] **Language Packs** - Extended language and dialect support
-- [ ] **Subtitles & Captions** - Real-time subtitle generation with styling
-
-### 🎯 Long-Term (2026+)
-
-- [ ] **Edge Computing** - Deploy models on edge devices
-- [ ] **Custom Model Training** - Fine-tune for domain-specific vocabulary
-- [ ] **Blockchain Integration** - Content authentication and verification
-- [ ] **AR/VR Support** - Immersive communication experiences
-- [ ] **Accessibility Features** - Enhanced support for disabilities
-
-### 📊 Performance Improvements
-
-- [ ] Reduce ASR latency to <100ms
-- [ ] Batch processing optimization
-- [ ] GPU acceleration support
-- [ ] Model quantization for faster inference
-- [ ] Caching and memoization strategies
-
 ---
 
 ## 📄 License & Credits
@@ -714,84 +575,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ```
-
-### 🙏 Acknowledgments & Attribution
-
-We extend our gratitude to the following:
-
-**Azure Cognitive Services** - For providing world-class AI services:
-- Speech-to-Text (ASR)
-- Neural Machine Translation
-- Text-to-Speech (Neural Voices)
-
-**Open Source Communities**:
-- [Streamlit](https://streamlit.io/) - Beautiful web framework
-- [FastAPI](https://fastapi.tiangolo.com/) - Modern API framework
-- [MoviePy](https://zulko.github.io/moviepy/) - Video processing
-- [Python](https://www.python.org/) - Programming language
-
-**Dependencies**:
-- `azure-cognitiveservices-speech`
-- `azure-cognitiveservices-language-translator`
-- `moviepy`
-- `streamlit`
-- `fastapi`
-- `soundfile`
-- `pandas`
-- `plotly`
-
-### 🤝 Contributing
-
-We welcome contributions! Please:
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### 📧 Contact & Support
-
-- **Email**: support@vidzai.com
-- **Website**: https://www.vidzai.com
-- **Issues**: [GitHub Issues](https://github.com/vidzai/ultra-audio-studio/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/vidzai/ultra-audio-studio/discussions)
-
-### 🐛 Reporting Issues
-
-Found a bug? Please create an issue with:
-- Clear description
-- Steps to reproduce
-- Expected vs. actual behavior
-- System information (OS, Python version, etc.)
-- Logs or error messages
-
-### 🎓 Learning Resources
-
-- [Azure Speech Services Documentation](https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/)
-- [Streamlit Tutorial](https://docs.streamlit.io/)
-- [FastAPI Guide](https://fastapi.tiangolo.com/tutorial/)
-- [Neural Machine Translation Basics](https://www.tensorflow.org/tutorials/text/nmt_with_attention)
-
 ---
-
-## 📞 Support & Community
-
-### 💬 Community Channels
-
-- **Discord**: [Join Server](https://discord.gg/vidzai)
-- **Twitter**: [@vidzai_labs](https://twitter.com/vidzai_labs)
-- **LinkedIn**: [Vidzai Digital](https://linkedin.com/company/vidzai)
-
-### 📚 Documentation
-
-- [API Documentation](./docs/API.md)
-- [Architecture Guide](./docs/ARCHITECTURE.md)
-- [Configuration Guide](./docs/CONFIG.md)
-- [Troubleshooting Guide](./docs/TROUBLESHOOTING.md)
-
----
-
 ## ⭐ Star Us!
 
 If you find this project helpful, please consider giving it a ⭐ on [GitHub](https://github.com/vidzai/ultra-audio-studio)!
