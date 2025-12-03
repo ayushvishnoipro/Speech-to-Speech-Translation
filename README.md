@@ -51,7 +51,7 @@ Transform speech from one language to another **in real-time** without compromis
 
 ## 🎥 Demo Video
 
-Video link: https://www.youtube.com/watch?v=j9u-gp7EpEA&t=19s
+https://github.com/user-attachments/assets/13535ca0-0c07-4505-b8ac-f579900c5f2d
 
 ---
 
