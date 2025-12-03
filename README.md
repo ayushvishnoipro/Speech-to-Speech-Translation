@@ -540,7 +540,7 @@ If you find this project helpful, please consider giving it a ⭐ on [GitHub](ht
 
 <div align="center">
 
-**Made with ❤️ by [Vidzai Digital](https://vidzai.com)**
+**Made with ❤️ by Infosys Springboard Team**
 
 *Breaking Language Barriers Through AI* 🌍🎤
 
